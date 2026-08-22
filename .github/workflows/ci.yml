@@ -37,7 +37,7 @@ jobs:
           cache: maven
 
       - name: Run tests
-        run: mvn test
+        run: ./mvnw test
         env:
           SPRING_DATASOURCE_URL: jdbc:postgresql://localhost:5432/finova_db
           SPRING_DATASOURCE_USERNAME: postgres
