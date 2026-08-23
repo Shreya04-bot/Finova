@@ -22,17 +22,17 @@ public class AdminController {
         return ResponseEntity.ok(adminService.getAllCustomers());
     }
 
-    @PatchMapping("/accounts/{id}/block")
-    public ResponseEntity<Void> blockAccount(@PathVariable Long id) {
+    @PatchMapping("/accounts/{accountNumber}/block")
+    public ResponseEntity<Void> blockAccount(@PathVariable String accountNumber) {
         String adminEmail = CurrentUserUtil.getCurrentUser().getUsername();
-        adminService.blockAccount(adminEmail, id);
+        adminService.blockAccountByNumber(adminEmail, accountNumber);
         return ResponseEntity.ok().build();
     }
 
-    @PatchMapping("/accounts/{id}/unblock")
-    public ResponseEntity<Void> unblockAccount(@PathVariable Long id) {
+    @PatchMapping("/accounts/{accountNumber}/unblock")
+    public ResponseEntity<Void> unblockAccount(@PathVariable String accountNumber) {
         String adminEmail = CurrentUserUtil.getCurrentUser().getUsername();
-        adminService.unblockAccount(adminEmail, id);
+        adminService.unblockAccountByNumber(adminEmail, accountNumber);
         return ResponseEntity.ok().build();
     }
 

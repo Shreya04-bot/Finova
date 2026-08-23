@@ -36,8 +36,8 @@ public class AdminService {
     }
 
     @Transactional
-    public void blockAccount(String adminEmail, Long accountId) {
-        Account account = accountRepository.findById(accountId)
+    public void blockAccountByNumber(String adminEmail, String accountNumber) {
+        Account account = accountRepository.findByAccountNumber(accountNumber)
                 .orElseThrow(() -> new ResourceNotFoundException("Account not found"));
 
         account.setStatus(AccountStatus.BLOCKED);
@@ -47,8 +47,8 @@ public class AdminService {
     }
 
     @Transactional
-    public void unblockAccount(String adminEmail, Long accountId) {
-        Account account = accountRepository.findById(accountId)
+    public void unblockAccountByNumber(String adminEmail, String accountNumber) {
+        Account account = accountRepository.findByAccountNumber(accountNumber)
                 .orElseThrow(() -> new ResourceNotFoundException("Account not found"));
 
         account.setStatus(AccountStatus.ACTIVE);
